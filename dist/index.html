@@ -1,16 +1,76 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
+    <title></title>
 </head>
 <body>
-  <img src="./images/turing-logo.png" alt="turing logo">
-  
-  <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
-  <script src="bundle.js"></script>
-
+    <nav> 
+        <section class ="nav-bar">
+            <button class = "shares-button">
+                SHARES
+            </button>
+            <button class ="playlists-button">
+                PLAYLISTS 
+            </button>
+            <button class = "personal">
+                PERSONAL VIDEOS
+            </button>
+        </section>
+        <section class="nav-bar-left">
+            <section class ="admin">   
+                <div>
+                    <ul>
+                      <li>
+                        <a href="#">Admin userName</a>
+                        <ul>
+                          <li><a href="#">SIGN IN</a></li>
+                          <li><a href="#">SIGN OUT</a></li>
+                        </ul>
+                      </li>
+                    </ul>
+                  </div>
+                <img class="nav-icon"src="" alt="A downward facing arrow.">
+            </section>
+        </section>
+    </nav>
+    <main>
+        <section class="share-title"> 
+            <h1 class="user-name"> SHARES</h1>
+        </section>
+        <section class="card-section">
+            <article class ="card-container">
+                <section class ="card-top">
+                    <img class="card-image"src="" alt="Cowboy ">
+                    <img class= "card-logo"src="" alt="A curved arrow aiming right">
+                    <p class ="card-views"> Views 01</p>
+                </section>
+                <section class = "card-bottom"> 
+                    <p class="= destination-name">Destination</p>
+                    <p class="destination-date"> Monday, Jan 4th</p>
+                    <h3 class="card-playlist">Playlist</h3>
+                    <p class="card-playlist-name">Secrets for the Best Music!</p>
+                    <h4 class="card-attachments">Attachments</h4>
+                    <p class="card-number">04</p>
+                </section>
+            </article>  
+            <!-- <article class ="card-container">
+                <section class ="card-top">
+                    <img class="card-image"src="" alt="Picture of a record disc">
+                    <img class= "card-logo"src="" alt="A curved arrow aiming right">
+                    <p class ="card-views"> Views 01</p>
+                </section>
+                <section class = "card-bottom"> 
+                    <p class="card-name">Artist Name</p>
+                    <p class="card-date"> Monday, Jan 4th</p>
+                    <a href="www.google.com" class="card-links" alt="Link to google.">Find the best Music in Denver, Colorado</a>
+                    <h3 class="card-playlist">Playlist</h3>
+                    <p class="card-playlist-name">Secrets for the Best Music!</p>
+                    <h4 class="card-attachments">Attachments</h4>
+                    <p class="card-number">04</p>
+                </section>
+            </article>   -->
+        </section> 
+    </main>
+    <script src="bundle.js"></script>
 </body>
+
 </html>
