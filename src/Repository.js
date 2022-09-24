@@ -1,7 +1,6 @@
 class Repository {
   constructor(data) {
     this.data = data;
-    console.log(this.data.data);
   }
   findUser(id, property) {
     return this.data.filter((user) => user[property] === id);
