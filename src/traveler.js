@@ -30,6 +30,19 @@ class Traveler {
 
       return`The Total Cost of all your Trips this year is $${totalWithFee}.`
   }
-
+  calcIndiviualTripCost(){
+    const total = this.destinations.reduce((acc, destination) =>{
+        const thisYearsTrips = this.trips.find((trip) => trip.destinationID === destination.id)
+        const flightCost = thisYearsTrips.travelers * destination.estimatedFlightCostPerPerson
+        const lodgingCost = thisYearsTrips.duration * destination.estimatedLodgingCostPerDay
+        acc = flightCost + lodgingCost
+      
+      return acc
+    },0)
+      const fee = total * .10
+      const totalWithFee = total + fee
+      console.log(totalWithFee)
+  }
+  
 }
 export default Traveler 

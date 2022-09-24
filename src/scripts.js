@@ -8,27 +8,29 @@ import "./images/turing-logo.png";
 // GLOBAL DATA ***************************************************
 let travelersRepository;
 let tripsRepository;
-let desinationRepository;
+let destinationRepository;
 let randomTraveler;
 
 // console.log("This is the JavaScript entry file - your code begins here.");
 
 // FETCH DATA *****************************************************
-Promise.all([
+function getData(){
+  Promise.all([
   fetchData("travelers"),
   fetchData("trips"),
   fetchData("destinations"),
 ]).then((data) => {
   setData(data);
 });
+}
 
 function setData(data) {
   travelersRepository = new Repository(data[0].travelers);
   tripsRepository = new Repository(data[1].trips);
-  desinationRepository = new Repository(data[2].destinations);
+  destinationRepository = new Repository(data[2].destinations);
   randomTraveler = getRandomTraveler(travelersRepository.data);
   randomTraveler.setUserData(tripsRepository, "trips", "userID");
-  randomTraveler.setTravelerDestinations(desinationRepository);
+  randomTraveler.setTravelerDestinations(destinationRepository);
   console.log("random traveler", randomTraveler);
   displayData();
 }
@@ -47,8 +49,15 @@ const newTripButton = document.querySelector('.new-trip-button')
 const inputBanner = document.querySelector('.input-banner')
 const cardContainer = document.querySelector(".card-container")
 const inputDestOptions = document.querySelector('.data-entry-type-selection')
+const userDateInput = document.querySelector('.date-input')
+const userDurationInput = document.querySelector(".duration-amount")
+const userNumTravelers = document.querySelector('.traveler-amount')
+const bookTripBtn = document.querySelector('.select-dest-btn')
+const inputForm = document.querySelector('.input-form')
 // EVENT LISTENERS ************************************************
 newTripButton.addEventListener('click', displayForm)
+bookTripBtn.addEventListener('click', retrieveInputData )
+window.addEventListener('load', getData)
 
 // EVENT HANDLERS *************************************************
 
@@ -98,17 +107,50 @@ function displayForm () {
 }
 
 function displayDropDown (){ 
-  let destinationName = desinationRepository
-  .findAllDestinations(desinationRepository)
+  // let value = destinationR
+  let destinationName = destinationRepository
+  .findAllDestinations(destinationRepository)
   destinationName.forEach(dest => 
     inputDestOptions.innerHTML += ` 
     <option 
       class="destination-data" 
-      value="dest-data">${dest}
+      value = "${dest}">${dest}
     </option>`
     )
+    console.log(randomTraveler.id)
 }
 
-function retrieveInputData () {
+// const destination = document.querySelector('.destination-data')
+// destination.addEventListener('click', destinationDrop)
+// function destinationDrop (destination){
+//   return destination.value 
+// }
+// const todaysInputDate = new Date().toISOString().slice(0, 10)
+//   console.log(todaysInputDate)
+//   const tripDate = document.getElementById("tripDate").min = `${todaysInputDate}`
+
+
+function retrieveInputData (event) {
+  event.preventDefault()
+  const destSelect = inputDestOptions.options[inputDestOptions.selectedIndex].value
+  const destID = destinationRepository.data.find(destination => destination.destination === destSelect)
+  let tripId = tripsRepository.data.length + 1 
+  const travelerData = {
+    id: tripId,
+    userID: randomTraveler.id, 
+    destinationID: destID.id,
+    travelers: parseInt(userDurationInput.value), 
+    date: userDateInput.value.split('-').join('/'), 
+    duration: parseInt(userDurationInput.value) , 
+    status:'pending', 
+    suggestedActivities: []
+  }
+  postData('trips', travelerData)
+  displayDestinationData('pending', destID, travelerData)
+    console.log(travelerData)
   
+  inputBanner.classList.add("hidden")
+  inputForm.reset()
+  return tripId + 1
+  // randomTraveler.calcIndiviualTripCost()
 }

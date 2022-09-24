@@ -20,5 +20,8 @@ class Repository {
     .map(dest =>dest.destination)
     .sort()
   }
+  findDestinationIDByName(selection, repo){
+    repo.data. map()
+  }
 }
 export default Repository;

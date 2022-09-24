@@ -11,11 +11,11 @@ function fetchData(repo) {
           // alert('Oops, something went wrong. Try refreshing your page.');
         });
   }
-  function postData(repo, userData) {
+  function postData(repo, travelerData) {
     const requestData = {
         method:'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(userData)
+        body: JSON.stringify(travelerData)
       };
   
     return fetch(`http://localhost:3001/api/v1/${repo}`, requestData)
@@ -23,11 +23,14 @@ function fetchData(repo) {
         if (!response.ok) {
           throw new Error('Not a 200 status');
         }
-        alert('Information submitted');
+        // alert('Information submitted');
         return response.json();
       })
+      .then(()=>{
+        fetchData('trips')
+      })
       .catch(error => {
-        alert('Oops, something went wrong. Try again later');
+        alert(error ,'Oops, something went wrong. Try again later');
       });
     }
   export { fetchData, postData }
