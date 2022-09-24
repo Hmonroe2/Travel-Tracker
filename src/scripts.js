@@ -1,6 +1,6 @@
 // DEPENDENCIES **************************************************
 import Repository from "./Repository";
-import { fetchData } from "./apicalls";
+import { fetchData, postData} from "./apicalls";
 import Traveler from "./traveler";
 import "./css/styles.css";
 import "./images/turing-logo.png";
