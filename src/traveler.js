@@ -13,8 +13,6 @@ class Traveler {
   setTravelerDestinations(dataset) {
     this.destinations = dataset.findTravelerDestinations(this.trips);
   }
- 
-  
   calcTotalTripCost(){
     // const todaysDate = new Date().toISOString().slice(0, 10).split("-").join("/");
     const thisYearsTrips = this.trips.filter((trip) => trip.date > '2022/01/01').map(trip => trip.destinationID)
@@ -30,9 +28,8 @@ class Traveler {
       const fee = total * .10
       const totalWithFee = total + fee
 
-      return`The Total Cost of all your Trips this year is $${totalWithFee}. `
-      }
-  
+      return`The Total Cost of all your Trips this year is $${totalWithFee}.`
+  }
+
 }
-// console.log(calcTotalTripCost())
 export default Traveler 
