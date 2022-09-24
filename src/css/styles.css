@@ -1,3 +1,6 @@
+.hidden{
+  display:none;
+}
 
 html{
   font-family: 'Roboto', sans-serif;
@@ -28,6 +31,13 @@ h1{
 main{
   margin: 5px;
 }
+
+.page-title{
+  color:beige;
+}
+.total-amount{
+  color:rgb(219, 215, 215);
+}
 .card-container:hover{
   transform: scale(1.05);
 }
@@ -41,12 +51,12 @@ main{
    box-shadow: 2px 2px  #949292;
 }
 .card-top{
-  height: 15vh;
+  height: 25vh;
   contain: content;
   position: relative;
 }
 .card-bottom{
-  height: 30vh;
+  height: 20vh;
   contain: content; 
   padding: 8px;
 }
@@ -133,7 +143,8 @@ main{
   margin-bottom: 2px;
 }
 .card-image{
-  width: 100%;
+  /* width: 100%; */
+  height: 100%;
 }
 
 .attachments{
@@ -141,6 +152,7 @@ main{
 }
 .nav-bar{
   display: flex;
+  flex-direction: column;
 }
 .nav-bar-left{
   contain: content;
@@ -195,41 +207,4 @@ button{
   flex-direction: column-reverse;
   align-content: flex-end;
   align-items: flex-end;
-}
-
-div a {
-text-decoration: none;
-color: rgb(7, 204, 226);
-font-size: 12px;
-padding: 15px;
-display:inline-block;
-}
-ul {
-display: inline;
-margin: 0;
-padding: 0;
-}
-ul li {
-  display: inline-block;
-}
-ul li:hover {
-  background:  rgb(244, 246, 246);
-}
-ul li:hover ul {
-  display: block;
-}
-ul li ul {
-position: absolute;
-width: 100px;
-display: none;
-}
-ul li ul li { 
-background: rgb(251, 254, 254); 
-display: block; 
-}
-ul li ul li a {
-  display:block;
-} 
-ul li ul li:hover {
-  background: rgb(92, 88, 88);
 }

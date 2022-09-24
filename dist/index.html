@@ -5,69 +5,45 @@
 <body>
     <nav> 
         <section class ="nav-bar">
-            <button class = "shares-button">
-                SHARES
-            </button>
-            <button class ="playlists-button">
-                PLAYLISTS 
-            </button>
-            <button class = "personal">
-                PERSONAL VIDEOS
+            <h1 class = "page-title"> Travel Tracker </h1>
+            <button class = "new-trip-button">
+                New Trip
             </button>
         </section>
         <section class="nav-bar-left">
-            <section class ="admin">   
-                <div>
-                    <ul>
-                      <li>
-                        <a href="#">Admin userName</a>
-                        <ul>
-                          <li><a href="#">SIGN IN</a></li>
-                          <li><a href="#">SIGN OUT</a></li>
-                        </ul>
-                      </li>
-                    </ul>
-                  </div>
-                <img class="nav-icon"src="" alt="A downward facing arrow.">
+            <section class ="amount-spent">   
+               <p class ="total-amount"> </p>
             </section>
         </section>
     </nav>
     <main>
+        <section class="input-banner hidden">
+            <section class="sleep-calendar-section card" id="sleepCalendarSection">
+              <label for="sleep-calendar" class="select-date">Select A Date: </label>
+              <input aria-label="Enter a date for individual data" class="date-input" id="dateInput" min="2019-06-15" max="2022-01-23" type="date" required>
+              <button aria-label="show sleep data for date button" class="show-data-btn" id="showSleepButton">Update User Data</button>
+              <button aria-label="reset" class="reset-data-btn" id="resetSleepButton">Reset Data</button>
+              <p><span class="post-error-message" id="postErrorMessage"></span></p>
+            </section>
+            <label class="duration" aria-label="Select a duration for your trip" for="durationAmt">Select a Duration for your Trip:</label>
+            <input type="number" id="durationAmt" name="quantity" min="1" max="31" required>
+            <label class="num-travelers" aria-label="enter number of Travelers" for="numTravelers">Select Number of Travelers (1 - 10):</label>
+            <input type="number" id="numTravelers" name="quantity" min="1" max="10" required>
+            <button class="submit-data-btn" id="submitData">Submit Entries</button>
+            <section class="pick-data" id="pickDataType">
+              <label for="data-type-slection">Select Data Type:</label>
+              <select id="select1" name="data-type-selection" class="data-entry-type-selection" required>
+                <option class="sleep-data" value="sleep data">sleep data</option>
+                <option class="hydration-data" value="hydration data">hydration data</option>
+                <option class="activity-data" value="activity data">activity data</option>
+              </select>
+              <button class="select-data-btn" id="selectDataType">Select data type</button>
+            </section>
+          </section>
         <section class="share-title"> 
             <h1 class="user-name"> SHARES</h1>
         </section>
         <section class="card-section">
-            <article class ="card-container">
-                <section class ="card-top">
-                    <img class="card-image"src="" alt="Cowboy ">
-                    <img class= "card-logo"src="" alt="A curved arrow aiming right">
-                    <p class ="card-views"> Views 01</p>
-                </section>
-                <section class = "card-bottom"> 
-                    <p class="= destination-name">Destination</p>
-                    <p class="destination-date"> Monday, Jan 4th</p>
-                    <h3 class="card-playlist">Playlist</h3>
-                    <p class="card-playlist-name">Secrets for the Best Music!</p>
-                    <h4 class="card-attachments">Attachments</h4>
-                    <p class="card-number">04</p>
-                </section>
-            </article>  
-            <!-- <article class ="card-container">
-                <section class ="card-top">
-                    <img class="card-image"src="" alt="Picture of a record disc">
-                    <img class= "card-logo"src="" alt="A curved arrow aiming right">
-                    <p class ="card-views"> Views 01</p>
-                </section>
-                <section class = "card-bottom"> 
-                    <p class="card-name">Artist Name</p>
-                    <p class="card-date"> Monday, Jan 4th</p>
-                    <a href="www.google.com" class="card-links" alt="Link to google.">Find the best Music in Denver, Colorado</a>
-                    <h3 class="card-playlist">Playlist</h3>
-                    <p class="card-playlist-name">Secrets for the Best Music!</p>
-                    <h4 class="card-attachments">Attachments</h4>
-                    <p class="card-number">04</p>
-                </section>
-            </article>   -->
         </section> 
     </main>
     <script src="bundle.js"></script>
