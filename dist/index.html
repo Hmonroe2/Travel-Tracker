@@ -1,13 +1,16 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <title></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Travel Tracker</title>
 </head>
 <body>
     <nav> 
         <section class ="nav-bar">
             <h1 class = "page-title"> Travel Tracker </h1>
             <button class = "new-trip-button">
-                New Trip
+                Book A New Trip
             </button>
         </section>
         <section class="nav-bar-left">
@@ -18,30 +21,24 @@
     </nav>
     <main>
         <section class="input-banner hidden">
-            <section class="sleep-calendar-section card" id="sleepCalendarSection">
-              <label for="sleep-calendar" class="select-date">Select A Date: </label>
+            <section class="destination-calendar-section card" id="destination-calendar-section">
+              <label for="destination-calendar" class="select-date">Select A Date: </label>
               <input aria-label="Enter a date for individual data" class="date-input" id="dateInput" min="2019-06-15" max="2022-01-23" type="date" required>
-              <button aria-label="show sleep data for date button" class="show-data-btn" id="showSleepButton">Update User Data</button>
-              <button aria-label="reset" class="reset-data-btn" id="resetSleepButton">Reset Data</button>
               <p><span class="post-error-message" id="postErrorMessage"></span></p>
             </section>
             <label class="duration" aria-label="Select a duration for your trip" for="durationAmt">Select a Duration for your Trip:</label>
             <input type="number" id="durationAmt" name="quantity" min="1" max="31" required>
             <label class="num-travelers" aria-label="enter number of Travelers" for="numTravelers">Select Number of Travelers (1 - 10):</label>
             <input type="number" id="numTravelers" name="quantity" min="1" max="10" required>
-            <button class="submit-data-btn" id="submitData">Submit Entries</button>
             <section class="pick-data" id="pickDataType">
-              <label for="data-type-slection">Select Data Type:</label>
+              <label for="data-type-slection">Select Destination:</label>
               <select id="select1" name="data-type-selection" class="data-entry-type-selection" required>
-                <option class="sleep-data" value="sleep data">sleep data</option>
-                <option class="hydration-data" value="hydration data">hydration data</option>
-                <option class="activity-data" value="activity data">activity data</option>
               </select>
-              <button class="select-data-btn" id="selectDataType">Select data type</button>
+              <button class="select-data-btn" id="selectDataType">Book Your Trip! </button>
             </section>
           </section>
-        <section class="share-title"> 
-            <h1 class="user-name"> SHARES</h1>
+        <section class="user-title"> 
+            <h1 class="user-name"> </h1>
         </section>
         <section class="card-section">
         </section> 

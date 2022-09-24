@@ -9,7 +9,6 @@ html{
 
 nav {
   display: flex;
-  border: 2px Solid black;
   height: 20%;
   background-color: #232323;
   justify-content: space-between;
@@ -33,10 +32,14 @@ main{
 }
 
 .page-title{
-  color:beige;
+  color:rgb(9, 202, 236);
+  font-weight: 600;
+  font-size: 30px;
+
 }
 .total-amount{
   color:rgb(219, 215, 215);
+  font-weight: 600;
 }
 .card-container:hover{
   transform: scale(1.05);
@@ -44,11 +47,11 @@ main{
 .card-container{
    transition: all .2s ease-in-out;
    background-color: rgba(252, 249, 249, 0.857);
-   width: 18vw;
-   height: 48vh;
+   width: 20vw;
+   height: 50vh;
    contain: content;
    margin: 5px;
-   box-shadow: 2px 2px  #949292;
+   box-shadow: 4px 4px  #6c6b6b;
 }
 .card-top{
   height: 25vh;
@@ -71,93 +74,23 @@ main{
   flex-wrap: wrap; 
 }
 
-.card-logo:hover{
-  transform: scale(1.5);
-  background-color: #949292;
-  border-radius: 10%;
-}
-.card-views:hover{
-  font-size: 105%;
-  color: rgb(23, 218, 240);
-}
-.card-views{
-  transition: all .2s ease-in-out;
-  position: absolute;
-  right: 10;
-  top:1;
-  color: white;
-  height: 20px;
-  width: 40px;
-  text-align: center;
-  margin-top: 10px;
-}
-.card-logo{
-  transition: all .2s ease-in-out;
-  height: 25px;
-  position:absolute;
-  left: 5;
-  top: 10;
-  margin-left: 5px;
-  border-radius: 10px;
-}
-.card-name{
-  font-size: 14px;
+.destination-name{
+  font-size: 18px;
   margin: 0;
-  color: #4c4c4c;
-}
-.card-date{
-  font-size: 12px;
-  color: #949292;
-  margin: 0;
-  margin-bottom: 10px;
-}
-.card-links:hover, .card-links:active{
-  color: blue;
-  font-size: 105%;
-}
-.card-links{
-  transition: all .2s ease-in-out;
-  margin-top: 8px;
-  background-color: rgba(198, 195, 195, 0.619);
-  color: #404040;
-  background-size:contain;
-}
-.card-playlist{
-  font-size: 12px;
-  margin-bottom: 0px;
-}
-.card-playlist-name{
-  margin: 0;
-  font-weight: 100;
-  font-size: 14px;
-}
-.card-attachments{
-  margin-bottom: 0px;
-  font-size: 12px;
+  color: black;
+  font-weight: 600;
 }
 
-.card-number{
-  color: rgb(60, 164, 208);
-  font-size: 24px;
-  margin-top: 2px;
-  margin-bottom: 2px;
-}
 .card-image{
-  /* width: 100%; */
+  width: 100%;
   height: 100%;
 }
 
-.attachments{
-  margin: 2px;
-}
 .nav-bar{
   display: flex;
   flex-direction: column;
 }
-.nav-bar-left{
-  contain: content;
-  height: 100%;;
-}
+
 button:hover{
   cursor: pointer;
   background-color: #949292;
@@ -176,35 +109,18 @@ button{
   text-align: center;
   font-size: 12px;
 }
-.personal{
-  width: 200px;
-}
-
 .nav-icon{
   width: 20px;
   height: 20px;
   margin-right: 10px;
 }
-.nav-admin{
-  color: rgb(0, 204, 255);
-}
-.admin{
-  display: flex;
-  align-items: center;
-  margin:0;
-  font-size: 12px;
-  margin-right: 10px;
-  margin-top: 5px;
-}
-.nav-logo{
-  height: 120px;
-  width: 200px;
-  align-items: center;
-  margin-right: 10px;
-}
+
 .nav-bar-left{
   display: flex;
   flex-direction: column-reverse;
   align-content: flex-end;
   align-items: flex-end;
+  contain: content;
+  height: 100%;;
+  margin: 10px;
 }
