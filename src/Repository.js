@@ -15,5 +15,10 @@ class Repository {
       return acc;
     }, []);
   }
+  findAllDestinations(repo){
+    return repo.data
+    .map(dest =>dest.destination)
+    .sort()
+  }
 }
-export default Repository 
+export default Repository;
