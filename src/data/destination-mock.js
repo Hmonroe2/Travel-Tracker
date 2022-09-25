@@ -1,4 +1,4 @@
-const destinations = [
+const destinationsData = [
     {
     id: 1,
     destination: "Lima, Peru",
@@ -48,3 +48,4 @@ const destinations = [
     alt: "lit up city at night"
     },
 ]
+export default destinationsData

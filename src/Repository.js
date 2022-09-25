@@ -13,7 +13,7 @@ class Repository {
         acc.push(destination);
       }
       return acc;
-    }, []);
+    },[]);
   }
   findAllDestinations(repo){
     return repo.data
@@ -23,3 +23,13 @@ class Repository {
  
 }
 export default Repository;
+
+
+
+
+
+
+
+
+
+
