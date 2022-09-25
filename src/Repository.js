@@ -7,7 +7,6 @@ class Repository {
   }
   findTravelerDestinations(travelersTrips) {
     const tripDestinationIDs = travelersTrips.map((trip) => trip.destinationID);
-
     return this.data.reduce((acc, destination) => {
       if (tripDestinationIDs.includes(destination.id)) {
         acc.push(destination);
