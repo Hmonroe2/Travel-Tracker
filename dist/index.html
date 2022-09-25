@@ -21,29 +21,30 @@
     </nav>
     <main>
         <section class="input-banner hidden">
-            <section class="destination-calendar-section card" id="destination-calendar-section">
-              <label for="destination-calendar" class="select-date">Select A Date: </label>
-              <input aria-label="Enter a date for individual data" class="date-input" id="dateInput" min="2019-06-15" max="2022-01-23" type="date" required>
-              <p><span class="post-error-message" id="postErrorMessage"></span></p>
+            <form class = "input-form">
+                <section class="destination-calendar-section card" id="destination-calendar-section">
+                <label for="destination-calendar" class="select-date">Select A Date: </label>
+                <input aria-label="Enter a date for individual data" class="date-input" id="dateInput" min="2022-09-24" max="2029-01-23" type="date" required>
+                <p><span class="post-error-message" id="postErrorMessage"></span></p>
+                </section>
+                <label class="duration" aria-label="Select a duration for your trip" for="durationAmt">Select a Duration for your Trip:</label>
+                <input type="number" class="duration-amount" name="quantity" min="1" max="31" required>
+                <label class="num-travelers" aria-label="enter number of Travelers" for="numTravelers">Select Number of Travelers (1 - 10):</label>
+                <input type="number" class="traveler-amount" name="quantity" min="1" max="10" required>
+                <section class="pick-data" id="pickDataType">
+                <label for="data-type-slection">Select Destination:</label>
+                <select id="select1" name="data-type-selection" class="data-entry-type-selection" required>
+                </select>
+                <button class="select-dest-btn" id="selectDataType">Book Your Trip! </button>
+                </section>
             </section>
-            <label class="duration" aria-label="Select a duration for your trip" for="durationAmt">Select a Duration for your Trip:</label>
-            <input type="number" id="durationAmt" name="quantity" min="1" max="31" required>
-            <label class="num-travelers" aria-label="enter number of Travelers" for="numTravelers">Select Number of Travelers (1 - 10):</label>
-            <input type="number" id="numTravelers" name="quantity" min="1" max="10" required>
-            <section class="pick-data" id="pickDataType">
-              <label for="data-type-slection">Select Destination:</label>
-              <select id="select1" name="data-type-selection" class="data-entry-type-selection" required>
-              </select>
-              <button class="select-data-btn" id="selectDataType">Book Your Trip! </button>
-            </section>
-          </section>
+        </form>
         <section class="user-title"> 
-            <h1 class="user-name"> </h1>
+            <h2 class="user-name"> </h2>
         </section>
         <section class="card-section">
         </section> 
     </main>
     <script src="bundle.js"></script>
 </body>
-
 </html>

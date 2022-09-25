@@ -20,5 +20,6 @@ class Repository {
     .map(dest =>dest.destination)
     .sort()
   }
+ 
 }
 export default Repository;
