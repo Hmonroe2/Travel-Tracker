@@ -21,6 +21,7 @@ function getData(){
   fetchData("destinations"),
 ]).then((data) => {
   setData(data);
+  console.log(data)
 });
 }
 
@@ -34,6 +35,10 @@ function setData(data) {
   console.log("random traveler", randomTraveler);
   displayData();
 }
+// function getRandomTravelerData(){
+//   randomTraveler = getRandomTraveler(travelersRepository.data)
+
+// }
 
 function getRandomTraveler(travelers) {
   const randomIndex = Math.floor(Math.random() * travelers.length);
@@ -58,14 +63,42 @@ const inputForm = document.querySelector('.input-form')
 newTripButton.addEventListener('click', displayForm)
 bookTripBtn.addEventListener('click', retrieveInputData )
 window.addEventListener('load', getData)
-
+// window.addEventListener('load', getRandomTravelerData)
 // EVENT HANDLERS *************************************************
+
+function retrieveInputData (event) {
+  event.preventDefault()
+  const destSelect = inputDestOptions.options[inputDestOptions.selectedIndex].value
+  const destID = destinationRepository.data.find(destination => destination.destination === destSelect)
+  let tripId = tripsRepository.data.length + 1
+  const travelerData = {
+    id: tripId,
+    userID: randomTraveler.id, 
+    destinationID: destID.id,
+    travelers: parseInt(userDurationInput.value), 
+    date: userDateInput.value.split('-').join('/'), 
+    duration: parseInt(userDurationInput.value) , 
+    status:'pending', 
+    suggestedActivities: []
+  }
+  console.log(tripsRepository)
+  tripsRepository.data.push(travelerData)
+
+  postData('trips', travelerData)
+   displayDestinationData('pending', destID, travelerData)
+  
+  console.log(tripsRepository.data)
+  inputBanner.classList.add("hidden")
+  inputForm.reset()
+  
+}
+
 
 
 function displayData() {
   travelerName.innerText = randomTraveler.findTravelerName();
-  displayDestinations();
   totalDisplay.innerText = randomTraveler.calcTotalTripCost();
+  displayDestinations();
   displayDropDown()
 }
 function displayDestinations() {
@@ -107,7 +140,6 @@ function displayForm () {
 }
 
 function displayDropDown (){ 
-  // let value = destinationR
   let destinationName = destinationRepository
   .findAllDestinations(destinationRepository)
   destinationName.forEach(dest => 
@@ -117,40 +149,28 @@ function displayDropDown (){
       value = "${dest}">${dest}
     </option>`
     )
-    console.log(randomTraveler.id)
 }
 
-// const destination = document.querySelector('.destination-data')
-// destination.addEventListener('click', destinationDrop)
-// function destinationDrop (destination){
-//   return destination.value 
-// }
-// const todaysInputDate = new Date().toISOString().slice(0, 10)
-//   console.log(todaysInputDate)
-//   const tripDate = document.getElementById("tripDate").min = `${todaysInputDate}`
-
-
-function retrieveInputData (event) {
-  event.preventDefault()
-  const destSelect = inputDestOptions.options[inputDestOptions.selectedIndex].value
-  const destID = destinationRepository.data.find(destination => destination.destination === destSelect)
-  let tripId = tripsRepository.data.length + 1 
-  const travelerData = {
-    id: tripId,
-    userID: randomTraveler.id, 
-    destinationID: destID.id,
-    travelers: parseInt(userDurationInput.value), 
-    date: userDateInput.value.split('-').join('/'), 
-    duration: parseInt(userDurationInput.value) , 
-    status:'pending', 
-    suggestedActivities: []
-  }
-  postData('trips', travelerData)
-  displayDestinationData('pending', destID, travelerData)
-    console.log(travelerData)
+// function retrieveInputData (event) {
+//   event.preventDefault()
+//   const destSelect = inputDestOptions.options[inputDestOptions.selectedIndex].value
+//   const destID = destinationRepository.data.find(destination => destination.destination === destSelect)
+//   let tripId = tripsRepository.data.length + 1
+//   const travelerData = {
+//     id: Date.now(),
+//     userID: randomTraveler.id, 
+//     destinationID: destID.id,
+//     travelers: parseInt(userDurationInput.value), 
+//     date: userDateInput.value.split('-').join('/'), 
+//     duration: parseInt(userDurationInput.value) , 
+//     status:'pending', 
+//     suggestedActivities: []
+//   }
+//   postData('trips', travelerData)
+//    displayDestinationData('pending', destID, travelerData)
   
-  inputBanner.classList.add("hidden")
-  inputForm.reset()
-  return tripId + 1
-  // randomTraveler.calcIndiviualTripCost()
-}
+//   console.log(tripsRepository.data)
+//   inputBanner.classList.add("hidden")
+//   inputForm.reset()
+//   // randomTraveler.calcIndiviualTripCost()
+// }
