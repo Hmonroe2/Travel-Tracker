@@ -1,5 +1,5 @@
 const tripsData = [
-    {
+  {
     id: 1,
     userID: 44,
     destinationID: 49,
@@ -7,9 +7,9 @@ const tripsData = [
     date: "2022/09/16",
     duration: 8,
     status: "approved",
-    suggestedActivities: [ ]
-    },
-    {
+    suggestedActivities: [],
+  },
+  {
     id: 2,
     userID: 2,
     destinationID: 2,
@@ -17,9 +17,9 @@ const tripsData = [
     date: "2022/10/04",
     duration: 18,
     status: "approved",
-    suggestedActivities: [ ]
-    },
-    {
+    suggestedActivities: [],
+  },
+  {
     id: 3,
     userID: 3,
     destinationID: 22,
@@ -27,9 +27,9 @@ const tripsData = [
     date: "2022/05/22",
     duration: 17,
     status: "approved",
-    suggestedActivities: [ ]
-    },
-    {
+    suggestedActivities: [],
+  },
+  {
     id: 4,
     userID: 43,
     destinationID: 14,
@@ -37,9 +37,9 @@ const tripsData = [
     date: "2022/02/25",
     duration: 10,
     status: "approved",
-    suggestedActivities: [ ]
-    },
-    {
+    suggestedActivities: [],
+  },
+  {
     id: 5,
     userID: 42,
     destinationID: 29,
@@ -47,9 +47,9 @@ const tripsData = [
     date: "2022/04/30",
     duration: 18,
     status: "approved",
-    suggestedActivities: [ ]
-    },
-    {
+    suggestedActivities: [],
+  },
+  {
     id: 6,
     userID: 29,
     destinationID: 35,
@@ -57,8 +57,8 @@ const tripsData = [
     date: "2022/06/29",
     duration: 9,
     status: "approved",
-    suggestedActivities: [ ]
-    },
-]
+    suggestedActivities: [],
+  },
+];
 
-export default tripsData
+export default tripsData;

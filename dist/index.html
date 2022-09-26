@@ -6,47 +6,68 @@
     <title>Travel Tracker</title>
 </head>
 <body>
-    <nav> 
-        <section class ="nav-bar">
-            <h1 class = "page-title"> Travel Tracker </h1>
-            <button class = "new-trip-button">
+    <header>
+        <div class="log-in-container hidden">
+            <p>
+            <section class="log-in-section">
+            <h2>Please Login ✈️</h2>
+            <div class="input-field">
+            <label for="userName">Username</label>
+            <input class="login-name"type="text" id="userName" placeholder="Enter Username" name="userName" max='10' required>
+            </div>
+            <div class="input-field">
+            <label for="password">Password</label>
+            <input type="password" id="password" placeholder="Enter Password" name="password" max='6' required>
+            </div>
+            <button class="submit-login" type="submit-login">Login</button>
+            </section>
+        </p>
+        </div>
+    </header>
+    <nav class = "nav-bar">
+        <section class="nav-bar">
+            <h1 class="page-title"> Travel Tracker </h1>
+            <button class="new-trip-button">
                 Book A New Trip
             </button>
             <p class="estimate"> </p>
         </section>
         <section class="nav-bar-left">
-            <section class ="amount-spent">   
-               <p class ="total-amount"> </p>
+            <section class="amount-spent">
+                <p class="total-amount"> </p>
             </section>
         </section>
     </nav>
-    <main>
+    <main class = main >
         <section class="input-banner hidden">
-            <form class = "input-form">
+            <form class="input-form">
                 <section class="destination-calendar-section card" id="destination-calendar-section">
-                <label for="destination-calendar" class="select-date">Select A Date: </label>
-                <input aria-label="Enter a date for individual data" class="date-input" id="dateInput" min="2022-09-24" max="2029-01-23" type="date" required>
-                <p><span class="post-error-message" id="postErrorMessage"></span></p>
+                    <label for="destination-calendar" class="select-date">Select A Date: </label>
+                    <input aria-label="Enter a date for individual data" class="date-input" id="dateInput"
+                        min="2022-09-24" max="2029-01-23" type="date" required>
                 </section>
-                <label class="duration" aria-label="Select a duration for your trip" for="durationAmt">Select a Duration for your Trip:</label>
+                <label class="duration" aria-label="Select a duration for your trip" for="durationAmt">Select a Duration
+                    for your Trip:</label>
                 <input type="number" class="duration-amount" name="quantity" min="1" max="31" required>
-                <label class="num-travelers" aria-label="enter number of Travelers" for="numTravelers">Select Number of Travelers (1 - 10):</label>
+                <label class="num-travelers" aria-label="enter number of Travelers" for="numTravelers">Select Number of
+                    Travelers (1 - 10):</label>
                 <input type="number" class="traveler-amount" name="quantity" min="1" max="10" required>
                 <section class="pick-data" id="pickDataType">
-                <label for="data-type-slection">Select Destination:</label>
-                <select id="select1" name="data-type-selection" class="data-entry-type-selection" required>
-                    <option class="destination-data" value = "null">Select </option>
-                </select>
+                    <label for="data-type-slection">Select Destination:</label>
+                    <select id="select1" name="data-type-selection" class="data-entry-type-selection" required>
+                        <option class="destination-data" value="null">Select </option>
+                    </select>
+                </section>
                 <button class="show-estimate"> Show Estimate </button>
                 <button class="select-dest-btn" id="selectDataType">Book Your Trip! </button>
-            </section>
-            </section>
-        </form>
-        <section class="user-title"> 
+            </form>
+        </section>
+        <section class="user-title">
             <h2 class="user-name"> </h2>
+            <h3> Here are your Trips</h3>
         </section>
         <section class="card-section">
-        </section> 
+        </section>
     </main>
     <script src="bundle.js"></script>
 </body>
