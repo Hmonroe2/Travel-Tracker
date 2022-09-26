@@ -10,6 +10,8 @@ let travelersRepository;
 let tripsRepository;
 let destinationRepository;
 let randomTraveler;
+let currentTraveler; 
+
 
 // console.log("This is the JavaScript entry file - your code begins here.");
 
@@ -35,10 +37,6 @@ function setData(data) {
   console.log("random traveler", randomTraveler);
   displayData();
 }
-// function getRandomTravelerData(){
-//   randomTraveler = getRandomTraveler(travelersRepository.data)
-
-// }
 
 function getRandomTraveler(travelers) {
   const randomIndex = Math.floor(Math.random() * travelers.length);
@@ -59,10 +57,13 @@ const userDurationInput = document.querySelector(".duration-amount")
 const userNumTravelers = document.querySelector('.traveler-amount')
 const bookTripBtn = document.querySelector('.select-dest-btn')
 const inputForm = document.querySelector('.input-form')
+const showEstimateBtn = document.querySelector('.show-estimate')
+const displayEst = document.querySelector('.estimate')
 // EVENT LISTENERS ************************************************
 newTripButton.addEventListener('click', displayForm)
-bookTripBtn.addEventListener('click', retrieveInputData )
+bookTripBtn.addEventListener('click', bookTrip)
 window.addEventListener('load', getData)
+showEstimateBtn.addEventListener('click', retrieveInputData)
 // window.addEventListener('load', getRandomTravelerData)
 // EVENT HANDLERS *************************************************
 
@@ -82,38 +83,38 @@ function retrieveInputData (event) {
     suggestedActivities: []
   }
   tripsRepository.data.push(travelerData)
-  postData('trips', travelerData)
-  displayDestinationData('pending', destID, travelerData)
-  inputBanner.classList.add("hidden")
-  inputForm.reset()
+  currentTraveler = travelerData
   calcSingleTrip(travelerData)
 }
+function bookTrip (event){
+  event.preventDefault()
+  const destSelect = inputDestOptions.options[inputDestOptions.selectedIndex].value
+  const destID = destinationRepository.data.find(destination => destination.destination === destSelect)
+  postData('trips', currentTraveler)
+  displayDestinationData('pending', destID, currentTraveler)
+  inputBanner.classList.add("hidden")
+  inputForm.reset()
+  displayEst.innerText = " "
+  return true
+}
+
+
 function calcSingleTrip(inputData) {
   const currentDestinationID = inputData.destinationID
   const total = destinationRepository.data.reduce((acc, destination) => {
     if (currentDestinationID === destination.id) {
       const currentFlightCost = inputData.travelers * destination.estimatedFlightCostPerPerson
-      console.log(currentFlightCost)
       const currentLodgingCost = inputData.duration * destination.estimatedLodgingCostPerDay
-      console.log(currentLodgingCost)
       acc += currentFlightCost + currentLodgingCost
     }
-    console.log(acc)
     return acc
   },0)
   const fee = total * .10
   const totalPlusFee = total + fee
   console.log(totalPlusFee)
   const estimate = totalPlusFee.toFixed(2)
-  return travelerName.innerText = `${estimate}`
+   return displayEst.innerText += `Your Trip Estimant is $${estimate}`
 }
-
-
-
-
-
-
-
 
 
 
