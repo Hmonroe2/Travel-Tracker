@@ -15,7 +15,7 @@ let currentTraveler;
 // FETCH DATA *****************************************************
 function getData(num){
   Promise.all([
-  fetchData("travelers"),
+  fetchData(`travelers/${num}`),
   fetchData("trips"),
   fetchData("destinations"),
 ]).then((data) => {
@@ -33,36 +33,36 @@ function getData(num){
  loginBtn.addEventListener('click', confirmLogin)
 
 function confirmLogin(){
-const userID = loginName.value.slice(8)
-
+  let userID = loginName.value.slice(8)
+  console.log(userID)
+  if(loginPassword.value === 'travel'){
+    getData(userID)
+    loginContainer.classList.add('hidden')
+    navBar.classList.remove('hidden')
+    mainPage.classList.remove('hidden')
+  }
 }
-
-
-
-
- function login(){
+ function loginScreen(){
 loginContainer.classList.remove('hidden')
 navBar.classList.add('hidden')
 mainPage.classList.add('hidden')
 }
 
-
 function setData(data) {
-  travelersRepository = new Repository(data[0].travelers);
+  randomTraveler = new Traveler(data[0])
   tripsRepository = new Repository(data[1].trips);
   destinationRepository = new Repository(data[2].destinations);
-  randomTraveler = getRandomTraveler(travelersRepository.data);
   randomTraveler.setUserData(tripsRepository, "trips", "userID");
   randomTraveler.setTravelerDestinations(destinationRepository);
   console.log("random traveler", randomTraveler);
   displayData();
 }
 
-function getRandomTraveler(travelers) {
-  const randomIndex = Math.floor(Math.random() * travelers.length);
-  const randomUserData = travelersRepository.findUser(randomIndex, "id");
-  return new Traveler(randomUserData[0]);
-}
+// function getRandomTraveler(travelers) {
+//   const randomIndex = Math.floor(Math.random() * travelers.length);
+//   const randomUserData = travelersRepository.findUser(randomIndex, "id");
+//   return new Traveler(randomUserData[0]);
+// }
 
 // DOM ELEMENTS ***************************************************
 const travelerName = document.querySelector(".user-name");
@@ -83,7 +83,7 @@ const displayEst = document.querySelector('.estimate')
 // EVENT LISTENERS ************************************************
 newTripButton.addEventListener('click', displayForm)
 bookTripBtn.addEventListener('click', bookTrip)
-window.addEventListener('load', login)
+window.addEventListener('load', loginScreen)
 showEstimateBtn.addEventListener('click', retrieveInputData)
 // window.addEventListener('load', getRandomTravelerData)
 // EVENT HANDLERS *************************************************
@@ -164,18 +164,18 @@ function displayDestinationData(status, travelerDestination, trip) {
         <img class="card-image" src="${travelerDestination.image}" alt="${travelerDestination.alt} ">
       </section>
      <section class = "card-bottom"> 
+        <p class ="card-label"> Destination </p>
         <p class="= destination-name">${travelerDestination.destination}</p>
+        <p class ="card-label"> Date </p>
         <p class="destination-date"> ${trip.date}</p>
+        <p class ="card-label"> Status </p>
         <p class = "destination-status "> ${status} </p> 
-        <P class = "trip status" >${trip.status} </p>
-        <h3>  </h3>
       </section>
   </article> `;
 }
 
 function displayForm () {
   console.log('im working')
-  cardSection.classList.add('hidden')
   inputBanner.classList.toggle("hidden")
 }
 
