@@ -12,24 +12,11 @@ class Repository {
         acc.push(destination);
       }
       return acc;
-    },[]);
-    return trip
+    }, []);
+    return trip;
   }
-  findAllDestinations(repo){
-    return repo.data
-    .map(dest =>dest.destination)
-    .sort()
+  findAllDestinations(repo) {
+    return repo.data.map((dest) => dest.destination).sort();
   }
- 
 }
 export default Repository;
-
-
-
-
-
-
-
-
-
-

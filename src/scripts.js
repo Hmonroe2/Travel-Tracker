@@ -12,9 +12,6 @@ let destinationRepository;
 let randomTraveler;
 let currentTraveler; 
 
-
-// console.log("This is the JavaScript entry file - your code begins here.");
-
 // FETCH DATA *****************************************************
 function getData(){
   Promise.all([
@@ -26,6 +23,22 @@ function getData(){
   console.log(data)
 });
 }
+ const navBar = document.querySelector('.nav-bar')
+ const mainPage = document.querySelector('.main')
+ const loginContainer = document.querySelector('.log-in-container')
+ const loginName = document.querySelector('.login-name')
+
+ function login(){
+
+loginContainer.classList.remove('hidden')
+navBar.classList.add('hidden')
+mainPage.classList.add('hidden')
+}
+
+
+
+
+
 
 function setData(data) {
   travelersRepository = new Repository(data[0].travelers);
@@ -59,10 +72,11 @@ const bookTripBtn = document.querySelector('.select-dest-btn')
 const inputForm = document.querySelector('.input-form')
 const showEstimateBtn = document.querySelector('.show-estimate')
 const displayEst = document.querySelector('.estimate')
+
 // EVENT LISTENERS ************************************************
 newTripButton.addEventListener('click', displayForm)
 bookTripBtn.addEventListener('click', bookTrip)
-window.addEventListener('load', getData)
+window.addEventListener('load', login)
 showEstimateBtn.addEventListener('click', retrieveInputData)
 // window.addEventListener('load', getRandomTravelerData)
 // EVENT HANDLERS *************************************************
@@ -111,7 +125,7 @@ function calcSingleTrip(inputData) {
   const totalPlusFee = total + fee
   console.log(totalPlusFee)
   const estimate = totalPlusFee.toFixed(2)
-   return displayEst.innerText += `Your Trip Estimant is $${estimate}`
+   return displayEst.innerText += `Your Trip Estimate is $${estimate}`
 }
 
 function displayData() {
