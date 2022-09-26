@@ -23,14 +23,6 @@ function getData(num){
   console.log(data)
 });
 }
- const navBar = document.querySelector('.nav-bar')
- const mainPage = document.querySelector('.main')
- const loginContainer = document.querySelector('.log-in-container')
- const loginName = document.querySelector('.login-name')
- const loginPassword = document.querySelector('#password')
- const loginBtn= document.querySelector('.submit-login')
-
- loginBtn.addEventListener('click', confirmLogin)
 
 function confirmLogin(){
   let userID = loginName.value.slice(8)
@@ -40,6 +32,8 @@ function confirmLogin(){
     loginContainer.classList.add('hidden')
     navBar.classList.remove('hidden')
     mainPage.classList.remove('hidden')
+  } else{
+    logInError.innerHTML = "Incorrect UserName or Password"
   }
 }
  function loginScreen(){
@@ -58,12 +52,6 @@ function setData(data) {
   displayData();
 }
 
-// function getRandomTraveler(travelers) {
-//   const randomIndex = Math.floor(Math.random() * travelers.length);
-//   const randomUserData = travelersRepository.findUser(randomIndex, "id");
-//   return new Traveler(randomUserData[0]);
-// }
-
 // DOM ELEMENTS ***************************************************
 const travelerName = document.querySelector(".user-name");
 const cardSection = document.querySelector(".card-section");
@@ -79,12 +67,21 @@ const bookTripBtn = document.querySelector('.select-dest-btn')
 const inputForm = document.querySelector('.input-form')
 const showEstimateBtn = document.querySelector('.show-estimate')
 const displayEst = document.querySelector('.estimate')
+const navBar = document.querySelector('.nav-bar')
+const mainPage = document.querySelector('.main')
+const loginContainer = document.querySelector('.log-in-container')
+const loginName = document.querySelector('.login-name')
+const loginPassword = document.querySelector('#password')
+const loginBtn= document.querySelector('.submit-login')
+const logInError = document.querySelector('.error')
+
 
 // EVENT LISTENERS ************************************************
+window.addEventListener('load', loginScreen)
 newTripButton.addEventListener('click', displayForm)
 bookTripBtn.addEventListener('click', bookTrip)
-window.addEventListener('load', loginScreen)
 showEstimateBtn.addEventListener('click', retrieveInputData)
+loginBtn.addEventListener('click', confirmLogin)
 // window.addEventListener('load', getRandomTravelerData)
 // EVENT HANDLERS *************************************************
 

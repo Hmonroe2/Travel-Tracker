@@ -1,30 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Travel Tracker</title>
 </head>
+
 <body>
     <header>
         <div class="log-in-container hidden">
             <p>
-            <section class="log-in-section">
-            <h2>Please Login ✈️</h2>
-            <div class="input-field">
-            <label for="userName">Username</label>
-            <input class="login-name"type="text" id="userName" placeholder="Enter Username" name="userName" max='10' required>
-            </div>
-            <div class="input-field">
-            <label for="password">Password</label>
-            <input type="password" id="password" placeholder="Enter Password" name="password" max='6' required>
-            </div>
-            <button class="submit-login" type="submit-login">Login</button>
-            </section>
-        </p>
+                <section class="log-in-section">
+                    <h2>Please Login ✈️</h2>
+                    <div class="input-field">
+                        <label for="userName">Username</label>
+                        <input class="login-name" type="text" id="userName" placeholder="Enter Username" name="userName"
+                            max='10' required>
+                    </div>
+                    <div class="input-field">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="Enter Password" name="password" max='6'
+                            required>
+                    </div>
+                    <button class="submit-login" type="submit-login">Login</button>
+                    <p class="error"></p>
+                </section>
+            </p>
         </div>
     </header>
-    <nav class = "nav-bar">
+    <nav class="nav-bar">
         <section class="nav-bar">
             <h1 class="page-title"> Travel Tracker </h1>
             <button class="new-trip-button">
@@ -38,7 +43,7 @@
             </section>
         </section>
     </nav>
-    <main class = main >
+    <main class=main>
         <section class="input-banner hidden">
             <form class="input-form">
                 <section class="destination-calendar-section card" id="destination-calendar-section">
@@ -71,4 +76,5 @@
     </main>
     <script src="bundle.js"></script>
 </body>
+
 </html>
