@@ -71,7 +71,7 @@ function retrieveInputData (event) {
   event.preventDefault()
   const destSelect = inputDestOptions.options[inputDestOptions.selectedIndex].value
   const destID = destinationRepository.data.find(destination => destination.destination === destSelect)
-  let tripId = tripsRepository.data.length + 1
+  const tripId = tripsRepository.data.length + 1
   const travelerData = {
     id: tripId,
     userID: randomTraveler.id, 
@@ -95,9 +95,7 @@ function bookTrip (event){
   inputBanner.classList.add("hidden")
   inputForm.reset()
   displayEst.innerText = " "
-  return true
 }
-
 
 function calcSingleTrip(inputData) {
   const currentDestinationID = inputData.destinationID
@@ -116,14 +114,12 @@ function calcSingleTrip(inputData) {
    return displayEst.innerText += `Your Trip Estimant is $${estimate}`
 }
 
-
-
-
 function displayData() {
   travelerName.innerText = randomTraveler.findTravelerName();
+  totalDisplay.innerText = ''
   totalDisplay.innerText = randomTraveler.calcTotalTripCost();
   displayDestinations();
-  displayDropDown()
+  displayDropDown();
 }
 function displayDestinations() {
   const todaysDate = new Date().toISOString().slice(0, 10).split("-").join("/");
