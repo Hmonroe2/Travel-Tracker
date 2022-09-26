@@ -33,7 +33,7 @@ class Traveler {
     }, 0);
     const fee = total * 0.1;
     const totalWithFee = total + fee;
-    return `The Total Cost of all your Trips this year 2022 is $${totalWithFee}.`;
+    return `The Total Cost of all your Trips this year 2022 is $${totalWithFee.toFixed(2)}.`;
   }
 }
 export default Traveler;

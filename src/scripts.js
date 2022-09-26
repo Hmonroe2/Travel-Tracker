@@ -29,6 +29,7 @@ function getData(num){
  const loginName = document.querySelector('.login-name')
  const loginPassword = document.querySelector('#password')
  const loginBtn= document.querySelector('.submit-login')
+ const logInError = document.querySelector('.error')
 
  loginBtn.addEventListener('click', confirmLogin)
 
@@ -40,6 +41,8 @@ function confirmLogin(){
     loginContainer.classList.add('hidden')
     navBar.classList.remove('hidden')
     mainPage.classList.remove('hidden')
+  } else{
+    logInError.innerHTML = "Incorrect UserName or Password"
   }
 }
  function loginScreen(){
