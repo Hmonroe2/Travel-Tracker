@@ -1,4 +1,4 @@
-const travelers = [
+const travelersData = [
     {
     id: 1,
     name: "Ham Leadbeater",
@@ -35,3 +35,5 @@ const travelers = [
     travelerType: "relaxer"
     },
 ]
+
+export default travelersData

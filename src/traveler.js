@@ -12,37 +12,22 @@ class Traveler {
   }
   setTravelerDestinations(dataset) {
     this.destinations = dataset.findTravelerDestinations(this.trips);
+    return this.trips
   }
   calcTotalTripCost(){
-    // const todaysDate = new Date().toISOString().slice(0, 10).split("-").join("/");
-    const thisYearsTrips = this.trips.filter((trip) => trip.date > '2022/01/01').map(trip => trip.destinationID)
+    const thisYearsTrips = this.trips.filter((trip) => trip.date >= '2022/01/01').map(trip => trip.destinationID)
     const total = this.destinations.reduce((acc, destination) =>{
       if(thisYearsTrips.includes(destination.id)){
-        const thisYearsTrips = this.trips.find((trip) => trip.destinationID === destination.id)
-        const flightCost = thisYearsTrips.travelers * destination.estimatedFlightCostPerPerson
-        const lodgingCost = thisYearsTrips.duration * destination.estimatedLodgingCostPerDay
+        const trips = this.trips.find((trip) => trip.destinationID === destination.id)
+        const flightCost = trips.travelers * destination.estimatedFlightCostPerPerson
+        const lodgingCost = trips.duration * destination.estimatedLodgingCostPerDay
         acc = flightCost + lodgingCost
       }
-      return acc
+        return acc
     },0)
-      const fee = total * .10
-      const totalWithFee = total + fee
-
-      return`The Total Cost of all your Trips this year is $${totalWithFee}.`
+    const fee = total * .10
+    const totalWithFee = total + fee
+      return`The Total Cost of all your Trips this year 2022 is $${totalWithFee}.`
   }
-  // calcIndiviualTripCost(){
-  //   const total = this.destinations.reduce((acc, destination) =>{
-  //       const thisYearsTrips = this.trips.find((trip) => trip.destinationID === destination.id)
-  //       const flightCost = thisYearsTrips.travelers * destination.estimatedFlightCostPerPerson
-  //       const lodgingCost = thisYearsTrips.duration * destination.estimatedLodgingCostPerDay
-  //       acc = flightCost + lodgingCost
-      
-  //     return acc
-  //   },0)
-  //     const fee = total * .10
-  //     const totalWithFee = total + fee
-  //     console.log(totalWithFee)
-  // }
-  
 }
 export default Traveler 

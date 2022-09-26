@@ -81,17 +81,40 @@ function retrieveInputData (event) {
     status:'pending', 
     suggestedActivities: []
   }
-  console.log(tripsRepository)
   tripsRepository.data.push(travelerData)
-
   postData('trips', travelerData)
-   displayDestinationData('pending', destID, travelerData)
-  
-  console.log(tripsRepository.data)
+  displayDestinationData('pending', destID, travelerData)
   inputBanner.classList.add("hidden")
   inputForm.reset()
-  
+  calcSingleTrip(travelerData)
 }
+function calcSingleTrip(inputData) {
+  const currentDestinationID = inputData.destinationID
+  const total = destinationRepository.data.reduce((acc, destination) => {
+    if (currentDestinationID === destination.id) {
+      const currentFlightCost = inputData.travelers * destination.estimatedFlightCostPerPerson
+      console.log(currentFlightCost)
+      const currentLodgingCost = inputData.duration * destination.estimatedLodgingCostPerDay
+      console.log(currentLodgingCost)
+      acc += currentFlightCost + currentLodgingCost
+    }
+    console.log(acc)
+    return acc
+  },0)
+  const fee = total * .10
+  const totalPlusFee = total + fee
+  console.log(totalPlusFee)
+  const estimate = totalPlusFee.toFixed(2)
+  return travelerName.innerText = `${estimate}`
+}
+
+
+
+
+
+
+
+
 
 
 
@@ -130,7 +153,6 @@ function displayDestinationData(status, travelerDestination, trip) {
         <h3>  </h3>
       </section>
   </article> `;
-  // console.log(desinationRepository.findAllDestinations())
 }
 
 function displayForm () {
@@ -139,7 +161,7 @@ function displayForm () {
   inputBanner.classList.toggle("hidden")
 }
 
-function displayDropDown (){ 
+function displayDropDown () { 
   let destinationName = destinationRepository
   .findAllDestinations(destinationRepository)
   destinationName.forEach(dest => 
@@ -151,26 +173,4 @@ function displayDropDown (){
     )
 }
 
-// function retrieveInputData (event) {
-//   event.preventDefault()
-//   const destSelect = inputDestOptions.options[inputDestOptions.selectedIndex].value
-//   const destID = destinationRepository.data.find(destination => destination.destination === destSelect)
-//   let tripId = tripsRepository.data.length + 1
-//   const travelerData = {
-//     id: Date.now(),
-//     userID: randomTraveler.id, 
-//     destinationID: destID.id,
-//     travelers: parseInt(userDurationInput.value), 
-//     date: userDateInput.value.split('-').join('/'), 
-//     duration: parseInt(userDurationInput.value) , 
-//     status:'pending', 
-//     suggestedActivities: []
-//   }
-//   postData('trips', travelerData)
-//    displayDestinationData('pending', destID, travelerData)
-  
-//   console.log(tripsRepository.data)
-//   inputBanner.classList.add("hidden")
-//   inputForm.reset()
-//   // randomTraveler.calcIndiviualTripCost()
-// }
+

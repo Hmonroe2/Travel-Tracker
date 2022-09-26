@@ -1,4 +1,4 @@
-const trips = [
+const tripsData = [
     {
     id: 1,
     userID: 44,
@@ -11,8 +11,8 @@ const trips = [
     },
     {
     id: 2,
-    userID: 35,
-    destinationID: 25,
+    userID: 2,
+    destinationID: 2,
     travelers: 5,
     date: "2022/10/04",
     duration: 18,
@@ -60,3 +60,5 @@ const trips = [
     suggestedActivities: [ ]
     },
 ]
+
+export default tripsData
