@@ -13,7 +13,7 @@ let randomTraveler;
 let currentTraveler; 
 
 // FETCH DATA *****************************************************
-function getData(){
+function getData(num){
   Promise.all([
   fetchData("travelers"),
   fetchData("trips"),
@@ -27,17 +27,24 @@ function getData(){
  const mainPage = document.querySelector('.main')
  const loginContainer = document.querySelector('.log-in-container')
  const loginName = document.querySelector('.login-name')
+ const loginPassword = document.querySelector('#password')
+ const loginBtn= document.querySelector('.submit-login')
 
- function login(){
+ loginBtn.addEventListener('click', confirmLogin)
 
-loginContainer.classList.remove('hidden')
-navBar.classList.add('hidden')
-mainPage.classList.add('hidden')
+function confirmLogin(){
+const userID = loginName.value.slice(8)
+
 }
 
 
 
 
+ function login(){
+loginContainer.classList.remove('hidden')
+navBar.classList.add('hidden')
+mainPage.classList.add('hidden')
+}
 
 
 function setData(data) {
