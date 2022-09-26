@@ -24,35 +24,25 @@ describe('Repository', function() {
 })
   it('should be a function', () => {
     expect(Repository).to.be.a('function')
-  })
+  });
   it('should be able to find user data given a user ID', () => {
   traveler1 = travelerRepo.findUser(1 ,'id')
   traveler2 = travelerRepo.findUser(2, 'id')
   expect(traveler1[0]).to.equal(travelersData[0])
   expect(traveler2[0]).to.equal(travelersData[1])
-  })
+  });
   it('should be able to find destinations', () => {
-    traveler1.setUserData(tripRepo, 'trips', 'userID')
-    traveler2.setUserData(tripRepo, 'trips', 'userID')
-    traveler1.setTravelerDestinations(destinationRepo)
-    traveler2.setTravelerDestinations(destinationRepo)
+    traveler1 = travelerRepo.findTravelerDestinations(tripsData)
    
-  expect(traveler1.setTravelerDestinations(destinationRepo).to.equal(
-    [
-    {
-      id: 2,
-      destination: 'Stockholm, Sweden',
-      estimatedLodgingCostPerDay: 100,
-      estimatedFlightCostPerPerson: 780,
-      image: 'https://images.unsplash.com/photo-1560089168-6516081f5bf1?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80',
-      alt: 'city with boats on the water during the day time'
-    }
-  ]
-  ))
-  })
+  expect(travelerRepo.findTravelerDestinations(tripsData)).to.deep.equal([{  
+    id: 2,
+    name: "Rachael Vaughten",
+    travelerType: "thrill-seeker"
+    }])
+  });
 
   it('should be able to get all destination and sort alphabetically', () => {
   let allDestinations =  destinationRepo.findAllDestinations(destinationRepo)
   expect(allDestinations).to.deep.equal(['Cartagena, Colombia', 'Jakarta, Indonesia', 'Lima, Peru', 'Madrid, Spain', 'Stockholm, Sweden', 'Sydney, Austrailia'])
-  })
+  });
 })

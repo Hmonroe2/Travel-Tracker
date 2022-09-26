@@ -29,6 +29,9 @@ h1{
 }
 main{
   margin: 5px;
+} 
+.estimate{
+  color: antiquewhite;
 }
 
 .page-title{
@@ -47,7 +50,7 @@ main{
 .card-container{
    transition: all .2s ease-in-out;
    background-color: rgba(252, 249, 249, 0.857);
-   width: 20vw;
+   width: 18vw;
    height: 50vh;
    contain: content;
    margin: 5px;
