@@ -25,6 +25,11 @@ describe('Repository', function() {
   it('should be a function', () => {
     expect(Repository).to.be.a('function')
   });
+  it('should hold repo data', () => {
+    
+  })
+
+  
   it('should be able to find user data given a user ID', () => {
   traveler1 = travelerRepo.findUser(1 ,'id')
   traveler2 = travelerRepo.findUser(2, 'id')
