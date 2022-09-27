@@ -12,7 +12,7 @@ class Repository {
         acc.push(destination);
       }
       return acc;
-    }, []);
+    },[]);
     return trip;
   }
   findAllDestinations(repo) {
