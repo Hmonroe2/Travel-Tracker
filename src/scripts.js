@@ -9,7 +9,7 @@ import "./images/turing-logo.png";
 let tripsRepository;
 let destinationRepository;
 let randomTraveler;
-let currentTraveler; 
+let currentTrip; 
 
 // FETCH DATA *****************************************************
 function getData(num){
@@ -67,11 +67,6 @@ function displayData() {
   displayUserData();
 }
 
-function displayUserData () {
-  travelerName.innerText = randomTraveler.findTravelerName();
-  totalDisplay.innerText = randomTraveler.calcTotalTripCost();
-}
-
 function addHidden (element) {
   element.classList.add('hidden');
 }
@@ -88,7 +83,7 @@ function confirmLogin(){
     removeHidden(navBar);
     removeHidden(mainPage);
   } else {
-    logInError.innerHTML = "Incorrect UserName or Password"
+    logInError.innerHTML = "Incorrect UserName or Password";
   }
 }
 
@@ -107,23 +102,19 @@ function retrieveInputData (event) {
     status:'pending', 
     suggestedActivities: []
   }
-  tripsRepository.data.push(tripData)
-  currentTraveler = tripData;
-  randomTraveler.calcTotalTripCost()
+  currentTrip = tripData;
   calcSingleTrip(tripData);
 }
 
 function bookTrip (event){
   event.preventDefault();
-  const destSelect = inputDestOptions.options[inputDestOptions.selectedIndex].value
-  const destID = destinationRepository.data.find(destination => destination.destination === destSelect)
+  const destSelect = inputDestOptions.options[inputDestOptions.selectedIndex].value;
+  const destID = destinationRepository.data.find(destination => destination.destination === destSelect);
   inputForm.reset();
   displayEst.innerText = " ";
-  randomTraveler.calcTotalTripCost()
-  postData('trips', currentTraveler);
-  displayDestinationData('pending', destID, currentTraveler);
+  postData('trips', currentTrip);
+  displayDestinationData('pending', destID, currentTrip);
   addHidden(inputBanner);
-  displayData()
 }
 
 function calcSingleTrip(inputData) {
@@ -140,6 +131,11 @@ function calcSingleTrip(inputData) {
   const totalPlusFee = total + fee;
   const estimate = totalPlusFee;
   return displayEst.innerText += `Your Trip Estimate is $${estimate}`;
+}
+
+function displayUserData () {
+  travelerName.innerText = randomTraveler.findTravelerName();
+  totalDisplay.innerText = randomTraveler.calcTotalTripCost();
 }
 
 function displayDestinations() {
