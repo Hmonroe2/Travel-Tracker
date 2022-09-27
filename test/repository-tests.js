@@ -2,7 +2,6 @@ import chai from "chai";
 const expect = chai.expect;
 import Traveler from "../src/traveler.js";
 import Repository from "../src/Repository.js";
-import destinationData from "../src/data/destination-mock.js";
 import tripsData from "../src/data/trip-mock.js";
 import travelersData from "../src/data/traveler-mock.js";
 import destinationsData from "../src/data/destination-mock.js";

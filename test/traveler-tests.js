@@ -70,5 +70,5 @@ beforeEach(() => {
     expect(traveler1.calcTotalTripCost()).to.equal('The Total Cost of all your Trips this year 2022 is $0.00.')
     expect(traveler2.calcTotalTripCost()).to.equal('The Total Cost of all your Trips this year 2022 is $6270.00.')
   })
-
+  
 });

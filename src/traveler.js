@@ -16,18 +16,16 @@ class Traveler {
   }
   calcTotalTripCost() {
     const thisYearsTrips = this.trips
-      .filter((trip) => trip.date > "2022/01/01")
-      .map((trip) => trip.destinationID);
+      .filter(trip => trip.date > "2022/01/01")
+      .map(trip => trip.destinationID);
     const total = this.destinations.reduce((acc, destination) => {
       if (thisYearsTrips.includes(destination.id)) {
-        const trips = this.trips.find(
-          (trip) => trip.destinationID === destination.id
-        );
+        const trips = this.trips.find((trip) => trip.destinationID === destination.id);
         const flightCost = trips.travelers * destination.estimatedFlightCostPerPerson;
         const lodgingCost = trips.duration * destination.estimatedLodgingCostPerDay;
         acc = flightCost + lodgingCost;
       }
-      return acc;
+       return acc;
     }, 0);
     const fee = total * 0.1;
     const totalWithFee = total + fee;

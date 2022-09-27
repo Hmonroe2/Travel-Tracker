@@ -1,6 +1,6 @@
 // DEPENDENCIES **************************************************
 import Repository from "./Repository";
-import { fetchData, postData} from "./apicalls";
+import { fetchData, postData} from "./apiCalls";
 import Traveler from "./traveler";
 import "./css/styles.css";
 import "./images/turing-logo.png";
@@ -28,7 +28,6 @@ function setData(data) {
   destinationRepository = new Repository(data[2].destinations);
   randomTraveler.setUserData(tripsRepository, "trips", "userID");
   randomTraveler.setTravelerDestinations(destinationRepository);
-  console.log("random traveler", randomTraveler);
   displayData();
 }
 
@@ -53,9 +52,8 @@ const loginPassword = document.querySelector('#password');
 const loginBtn= document.querySelector('.submit-login');
 const logInError = document.querySelector('.error');
 
-;
+
 // EVENT LISTENERS ************************************************
-// window.addEventListener('load', loginScreen);
 newTripButton.addEventListener('click', displayForm);
 bookTripBtn.addEventListener('click', bookTrip);
 showEstimateBtn.addEventListener('click', retrieveInputData);
@@ -63,7 +61,6 @@ loginBtn.addEventListener('click', confirmLogin);
 
 // EVENT HANDLERS *************************************************
 function displayData() {
-  travelerName.innerText = randomTraveler.findTravelerName();
   randomTraveler.calcTotalTripCost();
   displayDestinations();
   displayDropDown();
@@ -85,12 +82,12 @@ function removeHidden(element) {
 
 function confirmLogin(){
   let userID = loginName.value.slice(8)
-  if(loginPassword.value === 'travel'){
+  if(loginName.value !== "" && loginPassword.value === 'travel' && loginName.value.includes('Traveler')){
     getData(userID);
     addHidden(loginContainer);
     removeHidden(navBar);
     removeHidden(mainPage);
-  } else{
+  } else {
     logInError.innerHTML = "Incorrect UserName or Password"
   }
 }
@@ -111,8 +108,8 @@ function retrieveInputData (event) {
     suggestedActivities: []
   }
   tripsRepository.data.push(tripData)
-  randomTraveler.calcTotalTripCost()
   currentTraveler = tripData;
+  randomTraveler.calcTotalTripCost()
   calcSingleTrip(tripData);
 }
 
@@ -122,10 +119,11 @@ function bookTrip (event){
   const destID = destinationRepository.data.find(destination => destination.destination === destSelect)
   inputForm.reset();
   displayEst.innerText = " ";
+  randomTraveler.calcTotalTripCost()
   postData('trips', currentTraveler);
   displayDestinationData('pending', destID, currentTraveler);
   addHidden(inputBanner);
-  randomTraveler.calcTotalTripCost()
+  displayData()
 }
 
 function calcSingleTrip(inputData) {
@@ -193,5 +191,3 @@ function displayDropDown () {
     );
 }
 
-
-export default displayData

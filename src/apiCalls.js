@@ -1,4 +1,3 @@
-
 function fetchData(repo) {
   return fetch(`http://localhost:3001/api/v1/${repo}`)
     .then(response => {
@@ -28,5 +27,4 @@ function postData(repo, travelerData) {
       alert("Oops, something went wrong. Try refreshing your page.");
     });
 }
-
 export { fetchData, postData };
