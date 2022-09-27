@@ -53,3 +53,19 @@ npm install
 ```
 
 To verify that it is setup correctly, run `npm start` in your terminal. Go to `http://localhost:8080/` and you should see a page with the Turing logo image and a beautiful gradient background. If that's the case, you're good to go. Enter `control + c` in your terminal to stop the server at any time.
+
+
+<!-- MARKDOWN LINKS & IMAGES -->
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+[linkedin-url]: https://linkedin.com/in/matthew-press-813961246/
+[product-demo]: images/demo.gif
+[JavaScript.com]: https://img.shields.io/badge/-JavaScript-yellow
+[JavaScript-url]: https://www.javascript.com/
+[w3.org/Style/CSS/Overview.en.html]: https://img.shields.io/badge/-CSS-blue
+[CSS-url]: https://www.w3.org/Style/CSS/Overview.en.html
+[w3.org]: https://img.shields.io/badge/-HTML5-red
+[HTML-url]: https://www.w3.org/
+[Mocha-url]: https://mochajs.org/
+[https://mochajs.org/]: https://img.shields.io/badge/Mocha-8D6748?style=for-the-badge&logo=Mocha&logoColor=white
+[Chai-url]: https://www.chaijs.com/
+[https://www.chaijs.com/]: https://img.shields.io/badge/Chai-A30701?style=for-the-badge&logo=chai&logoColor=white
