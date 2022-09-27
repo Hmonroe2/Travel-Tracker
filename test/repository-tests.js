@@ -5,6 +5,7 @@ import Repository from "../src/Repository.js";
 import destinationData from "../src/data/destination-mock.js";
 import tripsData from "../src/data/trip-mock.js";
 import travelersData from "../src/data/traveler-mock.js";
+import destinationsData from "../src/data/destination-mock.js";
 // import trips from'../src/data/traveler-mock.js'
 
 // console.log(trips)
@@ -13,18 +14,25 @@ describe("Repository", function () {
   let traveler2;
   let travelerRepo;
   let destinationRepo;
+  let tripRepo
 
   beforeEach(() => {
     traveler1 = new Traveler(travelersData[0]),
     traveler2 = new Traveler(travelersData[1]),
     travelerRepo = new Repository(travelersData),
-    destinationRepo = new Repository(destinationData),
+    destinationRepo = new Repository(destinationsData),
     tripRepo = new Repository(tripsData)
   });
 
   it("should be a function", () => {
     expect(Repository).to.be.a("function");
   });
+
+  it('should have a property that stores data', () => {
+    expect(travelerRepo.data).to.equal(travelersData)
+    expect(destinationRepo.data).to.be.equal(destinationsData)
+    expect(tripRepo.data).to.be.equal(tripsData)
+  })
 
   it("should be able to find user data given a user ID", () => {
     traveler1 = travelerRepo.findUser(1, "id");

@@ -41,8 +41,8 @@ beforeEach(() => {
     expect(traveler2.travelerType).to.equal('thrill-seeker')
   });
   it('should return a traveler name', () => {
-    expect(traveler1.findTravelerName()).to.equal('Ham Leadbeater')
-    expect(traveler2.findTravelerName()).to.equal('Rachael Vaughten')
+    expect(traveler1.findTravelerName()).to.equal('Hello, Ham Leadbeater')
+    expect(traveler2.findTravelerName()).to.equal('Hello, Rachael Vaughten')
   });
   it("should have a property that stores trip data", () => {
     traveler1.setUserData(tripRepo, 'trips', 'userID')
@@ -67,8 +67,8 @@ beforeEach(() => {
     traveler1.setTravelerDestinations(destinationRepo)
     traveler2.setTravelerDestinations(destinationRepo)
 
-    expect(traveler1.calcTotalTripCost()).to.equal('The Total Cost of all your Trips this year 2022 is $0.')
-    expect(traveler2.calcTotalTripCost()).to.equal('The Total Cost of all your Trips this year 2022 is $6270.')
+    expect(traveler1.calcTotalTripCost()).to.equal('The Total Cost of all your Trips this year 2022 is $0.00.')
+    expect(traveler2.calcTotalTripCost()).to.equal('The Total Cost of all your Trips this year 2022 is $6270.00.')
   })
 
 });

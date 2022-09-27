@@ -55,13 +55,25 @@ const logInError = document.querySelector('.error');
 
 ;
 // EVENT LISTENERS ************************************************
-window.addEventListener('load', loginScreen);
+// window.addEventListener('load', loginScreen);
 newTripButton.addEventListener('click', displayForm);
 bookTripBtn.addEventListener('click', bookTrip);
 showEstimateBtn.addEventListener('click', retrieveInputData);
 loginBtn.addEventListener('click', confirmLogin);
 
 // EVENT HANDLERS *************************************************
+function displayData() {
+  travelerName.innerText = randomTraveler.findTravelerName();
+  randomTraveler.calcTotalTripCost();
+  displayDestinations();
+  displayDropDown();
+  displayUserData();
+}
+
+function displayUserData () {
+  travelerName.innerText = randomTraveler.findTravelerName();
+  totalDisplay.innerText = randomTraveler.calcTotalTripCost();
+}
 
 function addHidden (element) {
   element.classList.add('hidden');
@@ -83,18 +95,12 @@ function confirmLogin(){
   }
 }
 
-function loginScreen() {
-  removeHidden(loginContainer);
-  addHidden(navBar);
-  addHidden(mainPage);
-}
-
 function retrieveInputData (event) {
   event.preventDefault();
   const destSelect = inputDestOptions.options[inputDestOptions.selectedIndex].value;
   const destID = destinationRepository.data.find(destination => destination.destination === destSelect);
   const tripId = tripsRepository.data.length + 1;
-  const travelerData = {
+  const tripData = {
     id: tripId,
     userID: randomTraveler.id, 
     destinationID: destID.id,
@@ -104,9 +110,10 @@ function retrieveInputData (event) {
     status:'pending', 
     suggestedActivities: []
   }
-  tripsRepository.data.push(travelerData);
-  currentTraveler = travelerData;
-  calcSingleTrip(travelerData);
+  tripsRepository.data.push(tripData)
+  randomTraveler.calcTotalTripCost()
+  currentTraveler = tripData;
+  calcSingleTrip(tripData);
 }
 
 function bookTrip (event){
@@ -118,6 +125,7 @@ function bookTrip (event){
   postData('trips', currentTraveler);
   displayDestinationData('pending', destID, currentTraveler);
   addHidden(inputBanner);
+  randomTraveler.calcTotalTripCost()
 }
 
 function calcSingleTrip(inputData) {
@@ -132,16 +140,8 @@ function calcSingleTrip(inputData) {
   },0);
   const fee = total * .10;
   const totalPlusFee = total + fee;
-  const estimate = totalPlusFee.toFixed(2);
-    return displayEst.innerText += `Your Trip Estimate is $${estimate}`;
-}
-
-function displayData() {
-  travelerName.innerText = randomTraveler.findTravelerName();
-  totalDisplay.innerText = '';
-  totalDisplay.innerText = randomTraveler.calcTotalTripCost();
-  displayDestinations();
-  displayDropDown();
+  const estimate = totalPlusFee;
+  return displayEst.innerText += `Your Trip Estimate is $${estimate}`;
 }
 
 function displayDestinations() {
@@ -194,3 +194,4 @@ function displayDropDown () {
 }
 
 
+export default displayData
